@@ -620,7 +620,7 @@
   /* ---------- projects ---------- */
   .project-grid{
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 28px;
   }
   .project-card{
@@ -673,6 +673,16 @@
     font-size: 12px;
     color: rgba(255,255,255,0.55);
   }
+  .project-shot .shot-img{
+    position: absolute; inset: 0;
+    width: 100%; height: 100%;
+    object-fit: cover;
+    object-position: top;
+    z-index: 1;
+    display: block;
+  }
+  .project-shot.has-shot .art,
+  .project-shot.has-shot .mark{ display: none; }
   .project-body{ padding: 26px 26px 28px; }
   .project-body h3{ font-size: 19px; font-family: var(--font-body); font-weight: 700; margin-bottom: 8px; }
   .project-body p{ font-size: 14.5px; margin-bottom: 16px; }
