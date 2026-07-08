@@ -60,28 +60,6 @@
     document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('is-visible'); });
   }
 
-  var form = document.getElementById('contactForm');
-  var note = document.getElementById('formNote');
-  form.addEventListener('submit', function(e){
-    e.preventDefault();
-    var name = document.getElementById('fname').value.trim();
-    var email = document.getElementById('femail').value.trim();
-    var msg = document.getElementById('fmsg').value.trim();
-
-    if (!name || !email || !msg){
-      note.textContent = 'Please fill in every field before sending.';
-      note.classList.remove('is-success');
-      return;
-    }
-
-    var subject = encodeURIComponent('Portfolio contact from ' + name);
-    var body = encodeURIComponent(msg + '\n\n— ' + name + ' (' + email + ')');
-    window.location.href = 'mailto:your.email@example.com?subject=' + subject + '&body=' + body;
-
-    note.textContent = 'Opening your email client…';
-    note.classList.add('is-success');
-  });
-
   document.getElementById('year').textContent = new Date().getFullYear();
 
   var wheelViewport = document.getElementById('langWheel');
