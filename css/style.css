@@ -98,6 +98,12 @@
     margin-bottom: 14px;
   }
   .section-head p{ font-size: 17px; }
+  .section-head .section-note{
+    font-size: 13.5px;
+    color: var(--text-faint);
+    margin-top: 10px;
+    max-width: 580px;
+  }
 
   /* ---------- buttons ---------- */
   .btn{
