@@ -1,0 +1,10 @@
+/* Tailwind utility layer.
+   This is compiled to css/tailwind.css by `npm run build:css`.
+   It's loaded AFTER css/style.css in index.html on purpose: style.css owns
+   the design system (tokens, components, animation), Tailwind utilities are
+   the final, per-element override layer for spacing/layout tweaks and
+   responsive visibility — the "control of each pixel" layer. */
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
