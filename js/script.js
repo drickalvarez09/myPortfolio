@@ -6,6 +6,22 @@
   var panel = document.getElementById('mobilePanel');
   var navLinks = document.querySelectorAll('.nav-links a, .mobile-panel a[href^="#"]');
   var sections = document.querySelectorAll('main section[id]');
+  var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function animateCount(el){
+    var target = parseInt(el.getAttribute('data-count') || '0', 10);
+    var suffix = el.getAttribute('data-suffix') || '';
+    var duration = 1200;
+    var start = null;
+    function tick(now){
+      if (start === null) start = now;
+      var p = Math.min(1, (now - start) / duration);
+      var eased = 1 - Math.pow(1 - p, 3);
+      el.textContent = Math.round(target * eased) + suffix;
+      if (p < 1) requestAnimationFrame(tick);
+    }
+    requestAnimationFrame(tick);
+  }
 
   function onScroll(){
     var y = window.scrollY || document.documentElement.scrollTop;
@@ -77,8 +93,60 @@
       });
     }, { threshold: 0.15 });
     document.querySelectorAll('.reveal:not(.is-visible)').forEach(function(el){ reveal.observe(el); });
+
+    var counters = document.querySelectorAll('.stat-num[data-count]');
+    if (reduceMotion){
+      counters.forEach(function(el){
+        el.textContent = el.getAttribute('data-count') + (el.getAttribute('data-suffix') || '');
+      });
+    } else {
+      var counterObserver = new IntersectionObserver(function(entries){
+        entries.forEach(function(entry){
+          if (entry.isIntersecting){
+            animateCount(entry.target);
+            counterObserver.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.4 });
+      counters.forEach(function(el){ counterObserver.observe(el); });
+    }
   } else {
     document.querySelectorAll('.reveal').forEach(function(el){ el.classList.add('is-visible'); });
+    document.querySelectorAll('.stat-num[data-count]').forEach(function(el){
+      el.textContent = el.getAttribute('data-count') + (el.getAttribute('data-suffix') || '');
+    });
+  }
+
+  // FAQ accordion
+  document.querySelectorAll('.faq-question').forEach(function(btn){
+    btn.addEventListener('click', function(){
+      var item = btn.closest('.faq-item');
+      var wasOpen = item.classList.contains('is-open');
+      document.querySelectorAll('.faq-item.is-open').forEach(function(openItem){
+        openItem.classList.remove('is-open');
+        var q = openItem.querySelector('.faq-question');
+        if (q) q.setAttribute('aria-expanded', 'false');
+        var a = openItem.querySelector('.faq-answer');
+        if (a) a.style.maxHeight = '0px';
+      });
+      if (!wasOpen){
+        item.classList.add('is-open');
+        btn.setAttribute('aria-expanded', 'true');
+        var answer = item.querySelector('.faq-answer');
+        if (answer) answer.style.maxHeight = answer.scrollHeight + 'px';
+      }
+    });
+  });
+
+  // Service card glass glare
+  if (!reduceMotion){
+    document.querySelectorAll('.service-card').forEach(function(card){
+      card.addEventListener('mousemove', function(e){
+        var r = card.getBoundingClientRect();
+        card.style.setProperty('--mx', ((e.clientX - r.left) / r.width * 100) + '%');
+        card.style.setProperty('--my', ((e.clientY - r.top) / r.height * 100) + '%');
+      });
+    });
   }
 
   document.querySelectorAll('.shot-img').forEach(function(img){
@@ -177,7 +245,6 @@
   var canvas = document.getElementById('particleCanvas');
   if (canvas && canvas.getContext){
     var ctx = canvas.getContext('2d');
-    var reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
     var dpr = Math.min(window.devicePixelRatio || 1, 2);
     var width, height, particles;
     var pointer = { x: null, y: null, active: false };
@@ -351,19 +418,42 @@
     }
   }
 
-  if (window.matchMedia('(pointer: fine)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+  if (window.matchMedia('(pointer: fine)').matches && !reduceMotion){
     document.querySelectorAll('.project-card').forEach(function(card){
       card.addEventListener('mousemove', function(e){
         var r = card.getBoundingClientRect();
         var px = (e.clientX - r.left) / r.width - 0.5;
         var py = (e.clientY - r.top) / r.height - 0.5;
+        card.style.setProperty('--mx', ((px + 0.5) * 100) + '%');
+        card.style.setProperty('--my', ((py + 0.5) * 100) + '%');
         card.style.transform = 'perspective(800px) rotateX(' + (py * -6) + 'deg) rotateY(' + (px * 7) + 'deg) translateY(-5px)';
       });
       card.addEventListener('mouseleave', function(){
         card.style.transform = '';
+        card.style.setProperty('--mx', '50%');
+        card.style.setProperty('--my', '50%');
+      });
+    });
+
+    document.querySelectorAll('.btn.magnetic').forEach(function(btn){
+      btn.addEventListener('mousemove', function(e){
+        var r = btn.getBoundingClientRect();
+        var x = e.clientX - r.left - r.width / 2;
+        var y = e.clientY - r.top - r.height / 2;
+        btn.style.transform = 'translate(' + (x * 0.12) + 'px, ' + (y * 0.18) + 'px)';
+      });
+      btn.addEventListener('mouseleave', function(){
+        btn.style.transform = '';
       });
     });
   }
+
+  // Keep an open FAQ answer sized correctly when the layout reflows.
+  window.addEventListener('resize', function(){
+    document.querySelectorAll('.faq-item.is-open .faq-answer').forEach(function(a){
+      a.style.maxHeight = a.scrollHeight + 'px';
+    });
+  });
 
   document.querySelectorAll('.btn').forEach(function(btn){
     btn.addEventListener('pointerdown', function(e){
