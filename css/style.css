@@ -327,11 +327,12 @@
   }
   .mobile-panel a.mobile-resume{
     display: flex;
-    width: 100%;
+    width: fit-content;
     justify-content: center;
-    margin-top: 18px;
-    padding: 13px 20px;
+    margin: 20px auto 0;
+    padding: 13px 26px;
     border-bottom: 0;
+    font-size: 14.5px;
     color: #060a12;
   }
 

@@ -110,7 +110,10 @@
         <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor" width="20" height="20"><path d="M4.98 3.5a2.5 2.5 0 1 1 0 5 2.5 2.5 0 0 1 0-5ZM.5 8.98h4.96V23H.5V8.98Zm7.53 0h4.75v1.92h.07c.66-1.18 2.27-2.42 4.67-2.42 5 0 5.93 3.16 5.93 7.27V23h-4.96v-6.32c0-1.51-.03-3.45-2.15-3.45-2.15 0-2.48 1.63-2.48 3.34V23H8.03V8.98Z"/></svg>
       </a>
     </div>
-    <a href="Heidrick_Alvarez_Resume.pdf" class="btn btn-primary mobile-resume" download="Heidrick_Alvarez_Resume.pdf">Résumé</a>
+    <a href="Heidrick_Alvarez_Resume.pdf" class="btn btn-primary mobile-resume" download="Heidrick_Alvarez_Resume.pdf">
+      <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 3v12m0 0-4-4m4 4 4-4M4 19h16"/></svg>
+      Download Résumé
+    </a>
   </div>
 </nav>
 
@@ -409,12 +412,62 @@
       <div class="section-head reveal">
         <div class="eyebrow">// featured projects</div>
         <h2>What I've built so far</h2>
-        <p>Six systems built throughout college — class projects, a hackathon build, and two OJT deliverables — each one built to solve a real, proposed problem rather than launched as a commercial product.</p>
+        <p>Eight systems built throughout college — class projects, a hackathon build, and two OJT deliverables — each one built to solve a real, proposed problem rather than launched as a commercial product.</p>
         <p class="section-note">The versions shown here are simplified public demos. The original systems were built for academic, internship, or hackathon use, and often include additional features, backend logic, and database components not present in these hosted demos.</p>
       </div>
 
       <div class="project-grid">
-        
+
+        <article class="project-card reveal reveal-2">
+          <div class="project-shot" style="--pshot-bg: linear-gradient(135deg,#0f2436,#0a1526);">
+            <div class="chrome"><span></span><span></span><span></span></div>
+            <div class="art"></div>
+            <div class="mark">wanderly</div>
+            <img class="shot-img" src="images/projects/wanderly.png" alt="Wanderly Travel Agency homepage" loading="lazy">
+          </div>
+          <div class="project-body">
+            <div class="project-badge">New</div>
+            <h3>Wanderly Travel Agency</h3>
+            <p>Travel agency site built across a four-week practicum: a vanilla HTML/CSS/JS one-pager in week 1, a Vite + React + Tailwind mobile-first UI in week 2, a Next.js + PostgreSQL + Prisma data layer in week 3, then a Prisma-backed payment flow in week 4 — fake money, real data flow.</p>
+            <div class="project-tags"><span>HTML/CSS/JS</span><span>React</span><span>Vite</span><span>Tailwind CSS</span><span>Next.js</span><span>PostgreSQL</span><span>Prisma</span></div>
+            <div class="project-links">
+              <a href="https://assignment-main-eight.vercel.app/" target="_blank" rel="noopener">
+                <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg>
+                Live Demo
+              </a>
+              <a href="https://github.com/drickalvarez09/PracticumTest" target="_blank" rel="noopener">
+                <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.42 7.86 10.95.57.1.78-.25.78-.55v-2.15c-3.2.7-3.87-1.36-3.87-1.36-.53-1.33-1.29-1.69-1.29-1.69-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.12 3.05.74.8 1.19 1.82 1.19 3.08 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.08.78 2.17v3.22c0 .3.21.66.79.55A10.5 10.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
+                View Code
+              </a>
+            </div>
+          </div>
+        </article>
+
+        <article class="project-card reveal reveal-2">
+          <div class="project-shot" style="--pshot-bg: linear-gradient(135deg,#16263f,#0a1526);">
+            <div class="chrome"><span></span><span></span><span></span></div>
+            <div class="art"></div>
+            <div class="mark">marci-metzger-homes</div>
+            <img class="shot-img" src="images/projects/luxury-presence.png" alt="Marci Metzger Homes homepage revamp" loading="lazy">
+          </div>
+          <div class="project-body">
+            <div class="project-badge">New</div>
+            <h3>Marci Metzger Homes — Luxury Presence Assignment</h3>
+            <p>Single-page homepage revamp of a Pahrump, NV real-estate site in hand-written HTML, CSS, and vanilla JS — no framework, no build step. Persistent filter rail beside the listings, gallery lightbox, validated contact form, live office-hours status, full accessibility and reduced-motion pass.</p>
+            <div class="project-tags"><span>HTML5</span><span>CSS3</span><span>Vanilla JavaScript</span><span>Accessibility</span></div>
+            <div class="project-links">
+              <a href="https://drickalvarez09.github.io/LuxuryPresenceAssignment/" target="_blank" rel="noopener">
+                <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6"/><path d="M15 3h6v6"/><path d="M10 14 21 3"/></svg>
+                Live Demo
+              </a>
+              <a href="https://github.com/drickalvarez09/LuxuryPresenceAssignment" target="_blank" rel="noopener">
+                <svg aria-hidden="true" focusable="false" viewBox="0 0 24 24" fill="currentColor"><path d="M12 .5C5.65.5.5 5.65.5 12c0 5.1 3.29 9.42 7.86 10.95.57.1.78-.25.78-.55v-2.15c-3.2.7-3.87-1.36-3.87-1.36-.53-1.33-1.29-1.69-1.29-1.69-1.05-.72.08-.71.08-.71 1.16.08 1.77 1.19 1.77 1.19 1.03 1.77 2.71 1.26 3.37.96.1-.75.4-1.26.73-1.55-2.55-.29-5.24-1.28-5.24-5.68 0-1.26.45-2.28 1.19-3.08-.12-.29-.52-1.46.11-3.05 0 0 .97-.31 3.18 1.18a11 11 0 0 1 5.79 0c2.2-1.49 3.17-1.18 3.17-1.18.63 1.59.23 2.76.12 3.05.74.8 1.19 1.82 1.19 3.08 0 4.41-2.69 5.38-5.25 5.67.41.36.78 1.08.78 2.17v3.22c0 .3.21.66.79.55A10.5 10.5 0 0 0 23.5 12C23.5 5.65 18.35.5 12 .5Z"/></svg>
+                View Code
+              </a>
+            </div>
+          </div>
+        </article>
+
         <article class="project-card project-card--featured reveal reveal-1">
           <div class="project-shot" style="--pshot-bg: linear-gradient(135deg,#123a2c,#0a1a17);">
             <div class="chrome"><span></span><span></span><span></span></div>
