@@ -38,6 +38,8 @@
 
   function setMenu(open, restoreFocus){
     panel.classList.toggle('is-open', open);
+    nav.classList.toggle('menu-open', open);
+    toggle.classList.toggle('is-active', open);
     toggle.setAttribute('aria-expanded', open ? 'true' : 'false');
     toggle.setAttribute('aria-label', open ? 'Close menu' : 'Open menu');
     toggleIcon.innerHTML = open ? menuIconOpen : menuIconClosed;
